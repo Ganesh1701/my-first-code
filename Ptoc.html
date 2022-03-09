@@ -1,0 +1,25 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id='root'></div>
+
+<script type="text/babel"> 
+    function A(obj){
+        return<h1>A Component: {obj.n}</h1>
+    }
+     function App(){
+         const[name]=React.useState('Sachin')  
+         return<div>
+            <h1>App component</h1>
+            <A  n={name}/>
+        
+            </div>
+     }
+
+     ReactDOM.render(<App/>,document.getElementById("root"));
+
+</script>
+
+
+ 

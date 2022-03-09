@@ -1,0 +1,64 @@
+<html>
+    <head>
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+</head>
+<body>
+<div id='root'></div>
+
+<script type="text/babel"> 
+     function App() {
+         const[res,setRes]= React.useState('Not yet Received');
+         const noRef=React.useRef()
+         debugger;
+        function fnCheckPrime(){
+            var no = noRef.current.value;
+            var res= isPrime(no);
+            if(res){
+                setRes('Given No is prime')
+            }else{
+                setRes('it is not prime')
+            }
+        }
+        function fnGetPrimes(){
+            var no = noRef.current.value;
+            var primes=[]
+            for(var i=1;i<=no;i++){
+                if(isPrime(i)){
+                    primes.push(i)
+                }
+            }
+            setRes(primes.join(','))
+
+        } 
+        function isPrime(no){
+            var factors=0;
+            for(var i=1;i<=no;i++){
+                if(no%i==0){
+                    factors++
+                }
+            }
+            if(factors==2){
+                    return true}
+                else{
+                return false
+                }
+            }
+         return <div>
+            <p>
+               No:<input ref={noRef}/> 
+            </p>
+            <button onClick={fnCheckPrime}>check prime</button>
+            <button onClick={fnGetPrimes}>getprime</button>
+            <h2>{res}</h2>
+            </div>
+             
+     }
+     
+
+     ReactDOM.render(<App/>,document.getElementById("root"))
+
+</script>
+</body>
+</html>
